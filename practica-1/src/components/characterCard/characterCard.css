@@ -1,0 +1,42 @@
+.characterContainer {
+  background: #161b22;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid #30363d;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  
+  transition: all 0.25s ease;
+}
+
+.characterContainer:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(255, 232, 31, 0.2);
+  border-color: #FABADA;
+}
+
+/* Nombre */
+.nombre {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #f1ee97;
+  margin-bottom: 10px;
+
+}
+
+
+/* Información */
+.characterContainer p {
+  font-size: 0.95rem;
+  color: #FABADA;
+  margin: 0;
+}
+
+/* Separador visual opcional */
+.characterContainer p:not(:last-child) {
+  border-bottom: 1px solid #FABADA;
+  padding-bottom: 6px;
+}
