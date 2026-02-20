@@ -48,5 +48,5 @@ Tambien mostrará la pagina en la que estas actualmente si scrolleas hacia abajo
 
 5.-PROBLEMAS 
 
-    1.- Uno de los problemas que surgio fue la llamada a funciones en codigo html, tuve que pasar los parametros como objeto porque si los pasaba directamente no me compilaba, en la funcion characterCard, ademas tuve que pasar una key, porque el objeto del personaje en si no valia
-    2.- Otra de los problemas fue controlar cuando se pasaba de la pagina maxima, la solucion fue tener una variable con las paginas maximas y ser capaces de cuando falle la ejecucion del get por una pagina inexistente hacer el control de si ese error estaba provocado por la pagina y si era el case lanzar una alert al usuario
+5.1.- Uno de los problemas que surgio fue la llamada a funciones en codigo html, tuve que pasar los parametros como objeto porque si los pasaba directamente no me compilaba, en la funcion characterCard, ademas tuve que pasar una key, porque el objeto del personaje en si no valia
+5.2.- Otra de los problemas fue controlar cuando se pasaba de la pagina maxima, la solucion fue tener una variable con las paginas maximas y ser capaces de cuando falle la ejecucion del get por una pagina inexistente hacer el control de si ese error estaba provocado por la pagina y si era el case lanzar una alert al usuario
