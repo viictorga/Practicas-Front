@@ -14,20 +14,23 @@ la URL local donde podrás acceder desde el navegador (normalmente http://localh
 
 2.-ESTRUCTURACION DEL CODIGO
 
-Dentro de la carpeta src podemos encontrarnos con varias carpetas, entre ellas components, types y diferentes archivos .css y .tsx
+Dentro de la carpeta src podemos encontrarnos con varias carpetas, entre ellas components, types y diferentes archivos .css y .tsx.
 
-El archivo App.tsx es el que se encarga de tener la estrucutura principal del html y el que realiza la logica de ejecucion de las llamadas con un control de errores + loading, tambien añadimos la paginacion en este archivo
+El archivo App.tsx es el que se encarga de tener la estructura principal del HTML y el que realiza la lógica de ejecución de las llamadas con un control de errores + loading. También añadimos la paginación en este archivo.
 
-El archivo App.css e index.css son los archivos principales del estilo para App.tsx, he utilizado un proyecto de una pagina web de rick&morty para muchas de las caracteristicas que hay en estos .css
+El archivo App.css e index.css son los archivos principales del estilo para App.tsx. He utilizado un proyecto de una página web de Rick & Morty para muchas de las características que hay en estos .css.
 
-En la carpeta types encontramos el unico tipo que tiene el proyecto, que seria un unico caracter que devuelve la api con sus atributos
+En la carpeta types encontramos el único tipo que tiene el proyecto, que sería un único Character que devuelve la API con sus atributos.
 
 En la carpeta components nos encontramos otras 4 carpetas: loading, error, characterList, characterCard.
 
-- En loading podremos encontrar un archivo .tsx el cual devolvera un header con un loading en el caso de que loading este en true.
-- Lo mismo pasa con la carpeta error, la cual devolvera la informmacion del error en un header si la variable error es true.
-- En la carpeta characterList encontraremos un archivo.tsx el cual recibira un array de Character, esta funcion devolvera un map el cual con cada uno de los personajes llamara a la funcion PersonajeCarta.
-- En la carpeta de characterCard encontramos la funcion anteriormente nombrada esta funcion recibiria como parametros una key, que sera el nombre del personaje y el personaje en si, ambas siendo opcionales, esta funcion se encargara de enseñar en html la informacion solicitada del personaje que le hayamos pasado por parametros.
+En loading podremos encontrar un archivo .tsx el cual devolverá un header con un loading en el caso de que loading esté en true.
+
+Lo mismo pasa con la carpeta error, la cual devolverá la información del error en un header si la variable error es true.
+
+En la carpeta characterList encontraremos un archivo .tsx el cual recibirá un array de Character. Esta función devolverá un map, el cual con cada uno de los personajes llamará a la función PersonajeCarta.
+
+En la carpeta characterCard encontramos la función anteriormente nombrada. Esta función recibiría como parámetros una key, que será el nombre del personaje, y el personaje en sí, ambas siendo opcionales. Esta función se encargará de enseñar en HTML la información solicitada del personaje que le hayamos pasado por parámetros.
 
 3.-COMPORTAMIENTO DE LA PAGINA
 
@@ -43,3 +46,7 @@ Tambien mostrará la pagina en la que estas actualmente si scrolleas hacia abajo
 - Renderizacion con map
 - Componetizado modularmente
 
+5.-PROBLEMAS 
+
+    1.- Uno de los problemas que surgio fue la llamada a funciones en codigo html, tuve que pasar los parametros como objeto porque si los pasaba directamente no me compilaba, en la funcion characterCard, ademas tuve que pasar una key, porque el objeto del personaje en si no valia
+    2.- Otra de los problemas fue controlar cuando se pasaba de la pagina maxima, la solucion fue tener una variable con las paginas maximas y ser capaces de cuando falle la ejecucion del get por una pagina inexistente hacer el control de si ese error estaba provocado por la pagina y si era el case lanzar una alert al usuario
