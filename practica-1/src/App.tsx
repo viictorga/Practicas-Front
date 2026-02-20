@@ -12,10 +12,10 @@ const App =() =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [miError, setError] = useState<string | null>(null);
   const limitePagina: number = 10;
-  let limite : boolean = false;
+ 
 
   useEffect(()=>{
-  if(limitePagina <= pagina) limite = true;
+  
    let url = `https://swapi.dev/api/people/?page=${pagina}`
   
   axios.get(url)
@@ -26,7 +26,11 @@ const App =() =>{
         setError(null)
       })
       .catch((e) => {
-        setError(`Error cargando los datos: ${e.message ? e.message: e}`)
+        if(limitePagina <= pagina) alert("Has llegao a la ultima pagina :(");
+        else{
+          setError(`Error cargando los datos: ${e.message ? e.message: e}`)
+        }
+        
       })
       .finally(()=>{
         setLoading(false);
@@ -39,9 +43,8 @@ const App =() =>{
     <div className="todo">
       <h1>Lista de Personajes de Star Wars</h1>
       {loading && <LoadingInfo/>}
-      {limite && <h1>Has llegado al limite</h1>}
       {miError && <Errorcin errorr={miError} />}
-      
+      <p className="avisoPagina">Hay {limitePagina} paginas y estas en la pagina: {pagina}</p>
       <div>
           <Lista personajes={personajes}/>      
       </div>
