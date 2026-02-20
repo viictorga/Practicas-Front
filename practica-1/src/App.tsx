@@ -11,9 +11,11 @@ const App =() =>{
   const [personajes, setPersonajes] = useState<Character[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [miError, setError] = useState<string | null>(null);
- 
+  const limitePagina: number = 10;
+  let limite : boolean = false;
 
   useEffect(()=>{
+  if(limitePagina <= pagina) limite = true;
    let url = `https://swapi.dev/api/people/?page=${pagina}`
   
   axios.get(url)
@@ -37,8 +39,9 @@ const App =() =>{
     <div className="todo">
       <h1>Lista de Personajes de Star Wars</h1>
       {loading && <LoadingInfo/>}
+      {limite && <h1>Has llegado al limite</h1>}
       {miError && <Errorcin errorr={miError} />}
-
+      
       <div>
           <Lista personajes={personajes}/>      
       </div>
