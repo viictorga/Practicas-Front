@@ -1,0 +1,70 @@
+.mainContainer {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.tituloPrincipal {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  color: #ffffff;
+}
+
+.buscador {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.buscador input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.botones {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4c8bf5;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #2f6fe0;
+}
+
+.botonBorrarFiltros {
+  background-color: #e74c3c;
+}
+
+.botonBorrarFiltros:hover {
+  background-color: #c0392b;
+}
+
+.characterContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.characterContainer > * {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  
+}

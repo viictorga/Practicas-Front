@@ -1,66 +1,96 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+import "./page.css";
+import { useEffect, useState } from "react";
+import { Country } from "@/types";
+import { getAllCountries } from "@/lib/api/getAllCountries";
+import CountrieCard from "@/components/CountrieCard";
 
-export default function Home() {
+const Home = () => {
+
+  const [search,setSearch] = useState<string>("");
+  const [inputName,setInputName] = useState<string>("")
+  const [countries,setCountries] = useState<Country[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [miError, setError] = useState<string>("");
+
+  const borrarFiltros = () => {
+    setInputName("");
+    setSearch("");
+
+  };
+
+  useEffect(() => {
+
+    getAllCountries()
+      .then(res => {
+        setCountries(res.data)
+        setError("")
+      })
+      .catch((e) => {
+        setError(`Error cargando los datos: ${e.message ? e.message: e}`)
+      })
+      .finally(()=>{
+        setLoading(false);
+      })
+
+  }, [])
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className='mainContainer'>
+
+      <h1 className="tituloPrincipal">
+        Pagina de Paises
+      </h1>
+
+      <form className='buscador' onSubmit={(e)=>{
+        e.preventDefault();
+        setSearch(inputName);
+      }}>
+
+        <label>Nombre:</label>
+
+        <input
+          type="text"
+          value={inputName}
+          onChange={(e)=> setInputName(e.target.value)}
         />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {search && (
+          <button
+            type="button"
+            className="botonBorrarFiltros"
+            onClick={borrarFiltros}
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+            Borrar filtros
+          </button>
+        )}
+
+      </form>
+
+      <div className="botones">
+        <button onClick={() => setSearch(inputName)}>
+          Buscar
+        </button>
+      </div>
+
+      {loading && <h1>Loading...</h1>}
+      {miError && <h2>{miError}</h2>}
+
+      <div className="characterContainer">
+
+        {countries
+          .filter((x) =>
+            x.name.common.toLowerCase().includes(search.toLowerCase())
+          )
+          .map((e) => (
+            <CountrieCard key={e.name.common} countrie={e}/>
+          ))
+        }
+
+      </div>
+
     </div>
-  );
+  )
 }
+
+export default Home;
