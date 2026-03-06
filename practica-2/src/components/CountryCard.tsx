@@ -9,7 +9,7 @@ type Props= {
 };
 
 
-const CountrieCard = ({countrie}:Props) =>{
+const CountryCard = ({countrie}:Props) =>{
     const countrieOficial = countrie;
     const router = useRouter();
     return (
@@ -39,4 +39,4 @@ const CountrieCard = ({countrie}:Props) =>{
     </div>
   );
 }
-export default CountrieCard;
+export default CountryCard;

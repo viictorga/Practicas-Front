@@ -3,7 +3,7 @@ import "./page.css";
 import { useEffect, useState } from "react";
 import { Country } from "@/types";
 import { getAllCountries } from "@/lib/api/getAllCountries";
-import CountrieCard from "@/components/CountrieCard";
+import CountryCard from "@/components/CountryCard";
 
 const Home = () => {
 
@@ -83,7 +83,7 @@ const Home = () => {
             x.name.common.toLowerCase().includes(search.toLowerCase())
           )
           .map((e) => (
-            <CountrieCard key={e.name.common} countrie={e}/>
+            <CountryCard key={e.name.common} countrie={e}/>
           ))
         }
 
