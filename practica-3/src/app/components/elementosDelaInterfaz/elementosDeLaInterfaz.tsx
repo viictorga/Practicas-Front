@@ -15,18 +15,19 @@ const ElementosDeLaInterfaz = ({ producto }: Props) => {
   return (
     <div>
 
-      {/* Galería */}
       <div className="imagenes">
         <img src={producto.images[numero]} alt={producto.title} />
         <div className="imagenesNav">
           <button
             onClick={() => { if (numero - 1 >= 0) setNumero(numero - 1) }}
-            disabled={numero === 0}
+            // basicamente el disabled hace que no funcione el boton en el caso que se presenta
+            disabled={numero === 0} 
           >
             ←
           </button>
           <button
             onClick={() => { if (numero + 1 < producto.images.length) setNumero(numero + 1) }}
+            // basicamente el disabled hace que no funcione el boton en el caso que se presenta
             disabled={numero === producto.images.length - 1}
           >
             →
