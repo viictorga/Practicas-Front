@@ -1,0 +1,134 @@
+.characterContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .characterContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .characterContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.countryCard {
+  background: #141412;
+  border: 1px solid #2a2a26;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.countryCard:hover {
+  transform: translateY(-4px);
+  border-color: #3a3a36;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Línea dorada superior al hacer hover */
+.countryCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e8c547, #c9a830, transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 1;
+}
+
+.countryCard:hover::before {
+  opacity: 1;
+}
+
+/* ── Imagen ── */
+.flag {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.countryCard:hover .flag {
+  transform: scale(1.04);
+}
+
+/* ── Contenido ── */
+.countryCard > h2,
+.countryCard > p,
+.countryCard > button {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.countryName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f0ede6;
+  letter-spacing: 0.05em;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.population {
+  font-size: 12px;
+  color: #555550;
+  letter-spacing: 0.03em;
+  margin-bottom: 4px;
+}
+
+/* Badge de precio */
+.price {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #e8c547;
+  margin-top: 6px;
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+
+/* ── Botón ── */
+.verMas {
+  margin: 0 16px 16px 16px;
+  padding: 9px 0;
+  width: calc(100% - 32px);
+  background: transparent;
+  border: 1px solid #2a2a26;
+  border-radius: 6px;
+  color: #8a8880;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.verMas:hover {
+  background: #e8c547;
+  border-color: #e8c547;
+  color: #0a0a08;
+  font-weight: 600;
+}

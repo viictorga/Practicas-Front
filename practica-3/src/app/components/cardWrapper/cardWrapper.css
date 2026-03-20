@@ -1,0 +1,40 @@
+.wrapper {
+  background: #141412;
+  border: 1px solid #2a2a26;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.03);
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+}
+
+.wrapper::before {
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: black;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+
+
+.wrapper:hover {
+  border-color: #333330;
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.55),
+    0 1px 0 rgba(255, 255, 255, 0.04) inset;
+}
+
+.wrapper:hover::before {
+  opacity: 1;
+}

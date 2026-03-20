@@ -1,0 +1,48 @@
+.datosAdicionales {
+  background: #141412;
+  border: 1px solid #2a2a26;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.datosAdicionales h3 {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #555550;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid #2a2a26;
+}
+
+.datoFila {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #2a2a26;
+  transition: background 0.15s ease;
+}
+
+
+.datoFila:hover {
+  background: #1a1a18;
+}
+
+.datoLabel {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #555550;
+  white-space: nowrap;
+  padding-top: 1px;
+  flex-shrink: 0;
+}
+
+.datoValor {
+  font-size: 13px;
+  color: #8a8880;
+  text-align: right;
+  line-height: 1.5;
+}
+

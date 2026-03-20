@@ -5,38 +5,34 @@ import { Product } from "@/types";
 import { getAllProducts } from "@/lib/api/getAllProducts";
 import ProductCard from "./components/productCard/productCard";
 import ResultProductos from "./components/cantidadDeResultados/resultProductos";
-
-
+import SearchBar from "./components/searchBar/searchBar";
 
 const Home = () => {
 
-  const [search,setSearch] = useState<string>("");
-  const [inputName,setInputName] = useState<string>("")
-  const [products,setProducts] = useState<Product[]>([]);
+  // ✅ El estado de búsqueda reside en el PADRE (Page)
+  const [search, setSearch] = useState<string>("");
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [miError, setError] = useState<string>("");
 
-  const borrarFiltros = () => {
-    setInputName("");
-    setSearch("");
-
-  };
+  // Resultados filtrados calculados en el padre
+  const productosFiltrados = products.filter((x) =>
+    x.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   useEffect(() => {
-
     getAllProducts()
       .then(res => {
-        setProducts(res.data.products)
-        setError("")
+        setProducts(res.data.products);
+        setError("");
       })
       .catch((e) => {
-        setError(`Error cargando los datos: ${e.message ? e.message: e}`)
+        setError(`Error cargando los datos: ${e.message ? e.message : e}`);
       })
-      .finally(()=>{
+      .finally(() => {
         setLoading(false);
-      })
-
-  }, [search])
+      });
+  }, []);
 
   return (
     <div className='mainContainer'>
@@ -45,57 +41,25 @@ const Home = () => {
         Pagina de Productos
       </h1>
 
-      <form className='buscador' onSubmit={(e)=>{
-        e.preventDefault();
-        setSearch(inputName);
-      }}>
+   
+      <SearchBar
+        search={search}
+        setSearch={setSearch}
+      />
 
-        <label>Nombre:</label>
-
-        <input
-          type="text"
-          value={inputName}
-          onChange={(e)=> setInputName(e.target.value)}
-        />
-
-        {search && (
-          <button
-            type="button"
-            className="botonBorrarFiltros"
-            onClick={borrarFiltros}
-          >
-            Borrar filtros
-          </button>
-        )}
-        {<ResultProductos arrayProductos={products.filter((x) =>
-            x.title.toLowerCase().includes(search.toLowerCase())
-          )}/>}
-
-      </form>
-
-      <div className="botones">
-        <button onClick={() => setSearch(inputName)}>
-          Buscar
-        </button>
-      </div>
+      <ResultProductos arrayProductos={productosFiltrados} />
 
       {loading && <h1>Loading...</h1>}
       {miError && <h2>{miError}</h2>}
 
       <div className="characterContainer">
-
-        {products.filter((x) =>
-            x.title.toLowerCase().includes(search.toLowerCase())
-          )
-          .map((e) => (
-            <ProductCard key={e.title} product={e}/>
-          ))
-        }
-
+        {productosFiltrados.map((e) => (
+          <ProductCard key={e.id} product={e} />
+        ))}
       </div>
 
     </div>
-  )
-}
+  );
+};
 
 export default Home;

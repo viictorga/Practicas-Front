@@ -4,6 +4,6 @@ import axios from "axios";
 
 
 export const api = axios.create({
-    baseURL: `http://dummyjson.com`,
+    baseURL: `https://dummyjson.com`,
     timeout: 5000
 } )

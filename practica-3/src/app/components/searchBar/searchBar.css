@@ -1,0 +1,95 @@
+.searchBarWrapper {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #141412;
+  border: 1px solid #2a2a26;
+  border-radius: 8px;
+  padding: 10px 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+
+
+.searchBarContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #e8c547 40%,
+    #c9a830 60%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+
+
+
+
+
+.searchLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #555550;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+
+
+.searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f0ede6;
+  font-size: 15px;
+  padding: 4px 0;
+  min-width: 0;
+}
+
+
+
+.botonBorrarFiltros {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: rgba(232, 85, 71, 0.1);
+  border: 1px solid rgba(232, 85, 71, 0.3);
+  border-radius: 99px;
+  color: #e85547;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  animation: fadeIn 0.2s ease;
+}
+
+.botonBorrarFiltros:hover {
+  background: rgba(232, 85, 71, 0.2);
+  border-color: rgba(232, 85, 71, 0.55);
+  color: #f07060;
+}
+
