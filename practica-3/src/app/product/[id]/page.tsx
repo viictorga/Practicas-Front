@@ -29,10 +29,8 @@ const UnProducto = () => {
         <div className="layoutProducto">
             <h1>{producto.title}</h1>
 
-          {/* Columna izquierda: galería + volver */}
           <ElementosDeLaInterfaz producto={producto} />
 
-          {/* Columna derecha: datos adicionales */}
           <DatosAdicionales producto={producto} />
             <div>
                 <button className="botonVolver" onClick={() => router.back()}>

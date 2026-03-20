@@ -9,13 +9,11 @@ import SearchBar from "./components/searchBar/searchBar";
 
 const Home = () => {
 
-  // ✅ El estado de búsqueda reside en el PADRE (Page)
   const [search, setSearch] = useState<string>("");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [miError, setError] = useState<string>("");
 
-  // Resultados filtrados calculados en el padre
   const productosFiltrados = products.filter((x) =>
     x.title.toLowerCase().includes(search.toLowerCase())
   );
