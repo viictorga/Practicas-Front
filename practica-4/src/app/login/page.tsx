@@ -29,7 +29,7 @@ const PaginaIdentificacion = () =>{
                         <p>Email</p>    
                         <input placeholder="tu@nebrija.es" onChange={(e) => setEmail(e.target.value)}></input>
                         <p>Contraseña</p>
-                        <input placeholder="t*****" onChange={(e) => setPassword(e.target.value)}></input>
+                        <input placeholder="******" onChange={(e) => setPassword(e.target.value)}></input>
                         <button onClick={async () => {
     console.log("CLICK LOGIN");
 
@@ -39,7 +39,7 @@ const PaginaIdentificacion = () =>{
 
         const token = res.token;
 
-        document.cookie = `token=${token}; path=/`;
+        document.cookie = `Authorization=Bearer${token}; path=/`;
 
         console.log("COOKIE:", document.cookie);
 
@@ -63,7 +63,7 @@ Iniciar Sesion
                         <button onClick={()=>{
                             RegisterGuapo(username,email,password).then((res)=>{
                                 const token = res.token
-                                document.cookie = `token=${token}; path=/`
+                                document.cookie = `Authorization=Bearer${token}; path=/`
                                 router.push("/principal")
                             })
                         }}>Crear Cuenta</button>

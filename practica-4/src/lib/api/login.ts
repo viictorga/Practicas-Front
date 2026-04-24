@@ -11,8 +11,8 @@ export const LoginGuapo = async( email:string, password: string) =>{
     }, {
         headers:{
             "x-nombre": "vICTOR",
-            "Authorization": ""
+            
         }
     })
-    return respuesta.data.token;
+    return respuesta.data;
 }
