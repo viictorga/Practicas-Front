@@ -1,34 +1,44 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
-import { PostTwitter } from "../types";
 import { HomeGuapo } from "@/lib/api/home";
-import { PostGuapo } from "../components/post/postGuapo";
 
+export default function Principal() {
+  const [posts, setPosts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
- 
+  useEffect(() => {
+    const cargarPosts = async () => {
+      try {
+        const data = await HomeGuapo();
+        setPosts(data);
+      } catch (error) {
+        console.error("Error cargando posts:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    cargarPosts();
+  }, []);
 
+  if (loading) {
+    return <p>Cargando...</p>;
+  }
 
-const Princpalita = () =>{
-    const [posts, setPosts] = useState<PostTwitter[] | null>(null)
-    const [error, setError] = useState<string>("")
+  return (
+    <div>
+      <h1>Posts</h1>
 
-    useEffect(()=>{
-        HomeGuapo().then((res)=>{
-            setPosts(res)
-        }).catch((e)=>{
-            setError(e)
-        })
-    }, [])
-    return (
-        <div>
-            {posts && posts.map((e)=>{
-                return <PostGuapo post={e}></PostGuapo>
-            })}
-
-            
-        </div>
-    )
+      {posts.length === 0 ? (
+        <p>No hay posts</p>
+      ) : (
+        posts.map((post: any) => (
+          <div key={post.id}>
+            <p>{post.texto}</p>
+          </div>
+        ))
+      )}
+    </div>
+  );
 }
-export default Princpalita;

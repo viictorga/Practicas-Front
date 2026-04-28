@@ -10,7 +10,7 @@ export const LoginGuapo = async( email:string, password: string) =>{
         password
     }, {
         headers:{
-            "x-nombre": "vICTOR",
+            "x-nombre": "VICTOR",
             
         }
     })

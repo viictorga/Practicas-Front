@@ -1,0 +1,111 @@
+
+.pagina-identificacion {
+  font-family: 'Sora', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0a3d7c 0%, #1565c0 50%, #1e88e5 100%);
+}
+
+.pagina-identificacion .cajaLogin {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.pagina-identificacion .cajaLogin h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.08em;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.pagina-identificacion .cajaInfo {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+}
+
+.pagina-identificacion .tab-buttons {
+  display: flex;
+  background: #e3f2fd;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 1.5rem;
+  gap: 4px;
+}
+
+.pagina-identificacion .tab-buttons button {
+  flex: 1;
+  padding: 0.55rem 0;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  color: #1565c0;
+  transition: all 0.2s;
+}
+
+.pagina-identificacion .tab-buttons button.active {
+  background: #1565c0;
+  color: #fff;
+}
+
+.pagina-identificacion .cajaInputs p {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #1565c0;
+  text-align: left;
+  margin: 1rem 0 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pagina-identificacion .cajaInputs input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid #bbdefb;
+  border-radius: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  color: #0d47a1;
+  background: #f5f9ff;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.pagina-identificacion .cajaInputs input:focus {
+  border-color: #1565c0;
+  background: #fff;
+}
+
+.pagina-identificacion .cajaInputs input::placeholder {
+  color: #90b8e8;
+}
+
+.pagina-identificacion .cajaInputs .btnSubmit {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.8rem;
+  background: #1565c0;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.pagina-identificacion .cajaInputs .btnSubmit:hover  { background: #0d47a1; }
+.pagina-identificacion .cajaInputs .btnSubmit:active { transform: scale(0.98); }
